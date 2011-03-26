@@ -573,7 +573,7 @@
         model = new this.model(model, {collection: this});
       }
       var already = this.getByCid(model);
-      if (already) throw new Error(["Can't add the same model to a set twice", already.id]);
+      if (already && options.no_throw) throw new Error(["Can't add the same model to a set twice", already.id]);
       this._byId[model.id] = model;
       this._byCid[model.cid] = model;
       if (!model.collection) {
